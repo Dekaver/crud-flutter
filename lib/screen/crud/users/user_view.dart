@@ -69,13 +69,27 @@ class _UserScreenState extends State<UserScreen> {
         ? Center(
             child: CircularProgressIndicator(),
           )
-        : GridView.builder(
+        : ListView.builder(
             itemCount: users == null ? 0 : users.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
             // itemCount: 10,
             itemBuilder: (BuildContext context, int index) {
-              return makeTable(users[index]);
+              return Row(
+                children: [
+                  Text(users[index]['nama'],
+                    style: TextStyle(
+                      fontSize: 12),
+                  ),
+                  Container(
+                    height: 20,
+                    child: Text(users[index]['email'].toString(),
+                    style: TextStyle(
+                      fontSize: 12
+                    ),
+                    ),
+                  ),
+                ],
+              );
+              // return makeTable(users[index]);
             },
           );
     //       Container(
